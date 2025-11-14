@@ -13,12 +13,14 @@ dotenv.config()
 
 let port = process.env.PORT
 let app = express()
-app.use(express.json())
-app.use(cookieParser())
 app.use(cors({
     origin:"https://veritas-learning-1.onrender.com",
     credentials:true
 }))
+app.options("*", cors());
+app.use(express.json())
+app.use(cookieParser())
+
 app.use("/api/auth", authRouter)
 app.use("/api/user", userRouter)
 app.use("/api/course", courseRouter)
@@ -35,6 +37,7 @@ app.listen(port , ()=>{
     console.log("Server Started")
     connectDb()
 })
+
 
 
 
