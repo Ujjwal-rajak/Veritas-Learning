@@ -17,7 +17,6 @@ app.use(cors({
     origin:"https://veritas-learning-1.onrender.com",
     credentials:true
 }))
-app.options("*", cors());
 app.use(express.json())
 app.use(cookieParser())
 
@@ -37,6 +36,7 @@ app.listen(port , ()=>{
     console.log("Server Started")
     connectDb()
 })
+
 
 
 
